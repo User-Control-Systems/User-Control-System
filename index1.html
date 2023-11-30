@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/png" href="img/logo.png" />
+    <title>Üye Kayıt</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 10;
+            padding: 1;
+            box-sizing: border-box;
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        p {
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        /* Heading */
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        /* Labels */
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        /* Inputs */
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        /* Buttons */
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-family: 'Vina Sans', sans-serif;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            font-family: 'Vina Sans', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="display: flex; align-items: center;">
+            <img src="img/logo.png" alt="logo" width="250" height="250">
+            <h2>Spor Salonu Üyelik Kayıt Formu</h2>
+        </div>
+        <form action="process.php" method="post">
+            <label for="id">Üyelik Numarası: </label>
+            <input type="number" id="id" name="id" required>
+
+            <label for="name">Ad:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="surname">Soyad:</label>
+            <input type="text" id="surname" name="surname" required>
+
+            <label for="enddate">Üyelik Bitiş Tarihi: </label>
+            <input type="date" id="enddate" name="enddate" required>
+
+            <label for="type">Üyelik Tipi:</label>
+            <select id="type" name="type" required>
+                <option value="Standart Üyelik">Standart Üyelik 750₺</option>
+                <option value="Premium Üyelik">Premium Üyelik 1300₺</option>
+                <option value="Gold Üyelik">Gold Üyelik 1800₺</option>
+                <!-- İsterseniz başka seçenekler ekleyebilirsiniz -->
+            </select>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Üyelik Türü</th>
+                        <th>Fiyat</th>
+                        <th>Özellikler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Standart Üyelik</td>
+                        <td>₺750/ay</td>
+                        <td>
+                            <ul>
+                                <li>Haftada 2 Gün</li>
+                                <li>Belirli Spor Aletlerine</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Premium Üyelik</td>
+                        <td>₺1300/ay</td>
+                        <td>
+                            <ul>
+                                <li>Haftada 2 Gün</li>
+                                <li>Çalışma Planı</li>
+                                <li>Tüm Spor Aletlerine Erişim</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gold Üyelik</td>
+                        <td>₺1800/ay</td>
+                        <td>
+                            <ul>
+                                <li>Haftada 3 Gün</li>
+                                <li>Çalışma Planı</li>
+                                <li>Özel koç</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+            <br>
+
+            <button type="submit">Kaydet</button>
+            <br>
+            <a href="list.html">
+                <button type="button">Kişi Listesine Eriş</button>
+            </a>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    var inputs = document.querySelectorAll("input[type='text']");
+
+    inputs.forEach(function (input) {
+        input.addEventListener("input", function (e) {
+            input.value = input.value.replace(/[^a-zA-ZşçüğıöŞÇÜĞÖ ]/g, ''); // boşluk karakterini de izin verilen karakterlere ekledik
+        });
+    });
+});
+
+    </script>
+</body>
+
+</html>
